@@ -1,2 +1,4 @@
 /vendor/
 /config/local.config.php
+/data/log/*
+!/data/log/.gitkeep
