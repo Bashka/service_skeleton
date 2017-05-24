@@ -11,6 +11,10 @@ use Service\Container\ConfigProvider;
 use Service\Controller\IndexController;
 use Zend\Stratigility\Middleware\ErrorHandler;
 
+set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext){
+  throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+}, error_reporting());
+
 $config = (new ConfigProvider)->getConfig();
 $container = new ServiceManager($config['container']);
 $container->setService('Configuration', $config);
