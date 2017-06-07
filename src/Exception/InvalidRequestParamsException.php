@@ -16,7 +16,14 @@ class InvalidRequestParamsException extends InvalidRequestException{
    * {@inheritdoc}
    */
   public function __construct(array $params, $code = 0, $previous = null){
-    parent::__construct('Invalid request params', $code, $previous);
+    parent::__construct(
+      sprintf(
+        'Invalid request params: %s',
+        var_export($params, true)
+      ),
+      $code,
+      $previous
+    );
     
     $this->params = $params;
   }
